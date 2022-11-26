@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode, useMemo } from "react";
 import { TextStyleProps, Typography, useTextStyle } from "./useTextStyle";
-import styled from "styled-components";
 import { colors } from "constants/color";
+import styled from "styled-components";
 
 export interface TextProps extends TextStyleProps {
   maxLength?: number;
@@ -10,7 +10,7 @@ export interface TextProps extends TextStyleProps {
 }
 
 export function Text({
-  typography = Typography.Text_20,
+  typography = Typography.Text_16,
   color = colors.green,
   center,
   maxLength,
@@ -29,8 +29,12 @@ export function Text({
   }, [props.children, maxLength]);
 
   return (
-    <span {...props} style={textStyle}>
+    <StyledText {...props} style={textStyle}>
       {children}
-    </span>
+    </StyledText>
   );
 }
+
+const StyledText = styled.div`
+  display: flex;
+`;

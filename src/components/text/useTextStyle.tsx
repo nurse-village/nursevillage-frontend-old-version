@@ -22,7 +22,14 @@ export interface TextStyleProps {
   center?: boolean;
 }
 
-const STYLE_BY_TYPOGRAPHY: Record<Typography, TextStyle> = {
+interface TypoStyle {
+  fontFamily: string;
+  fontWeight: string;
+  fontSize: number;
+  lineHeight: number;
+}
+
+const STYLE_BY_TYPOGRAPHY: Record<Typography, TypoStyle> = {
   [Typography.Title_light]: {
     fontFamily: "Pretendard-Medium",
     fontWeight: "500",
@@ -37,59 +44,66 @@ const STYLE_BY_TYPOGRAPHY: Record<Typography, TextStyle> = {
   },
   [Typography.Text_24]: {
     fontFamily: "Pretendard-Medium",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 24,
     lineHeight: 27.6,
   },
   [Typography.Text_20]: {
     fontFamily: "Pretendard-Medium",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 20,
     lineHeight: 23,
   },
   [Typography.Text_16]: {
     fontFamily: "Pretendard-Medium",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 16,
     lineHeight: 18.4,
   },
   [Typography.Text_14]: {
     fontFamily: "Pretendard-Medium",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 14,
     lineHeight: 16.1,
   },
   [Typography.Text_12]: {
     fontFamily: "Pretendard-Medium",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 12,
     lineHeight: 13.8,
   },
   [Typography.Sub_14]: {
     fontFamily: "Pretendard-Light",
-    fontWeight: 300,
+    fontWeight: "300",
     fontSize: 14,
     lineHeight: 16.1,
   },
   [Typography.Bold_14]: {
     fontFamily: "Pretendard-Bold",
-    fontWeight: 700,
+    fontWeight: "700",
     fontSize: 14,
     lineHeight: 16.1,
   },
 };
 
-export function useTextStyle(
-  props: TextStyleProps
-): ComponentProps<HTMLAttributes<HTMLSpanElement>> {
+export interface TextStyleType {
+  styles: TypoStyle;
+  color: string;
+  textAlign: string | undefined;
+}
+
+export function useTextStyle({
+  typography = Typography.Text_16,
+  ...props
+}: TextStyleProps): TextStyleType {
   return useMemo(() => {
-    const styles = STYLE_BY_TYPOGRAPHY[props.typography];
+    const styles = STYLE_BY_TYPOGRAPHY[typography];
     const color = props.color ?? DEFAULT_TEXT_COLOR;
     const textAlign = props.center ? "center" : undefined;
     return {
-      ...styles,
+      styles,
       color,
       textAlign,
     };
-  }, [props.color, props.center, props.typography]);
+  }, [props.color, props.center, typography]);
 }
