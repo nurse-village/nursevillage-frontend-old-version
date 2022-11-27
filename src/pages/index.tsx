@@ -1,4 +1,5 @@
 import { Button } from "components/button";
+import { TextArea } from "components/form";
 import { TextField } from "components/form/TextField";
 import { Text } from "components/text/Text";
 import Head from "next/head";
@@ -25,7 +26,14 @@ export default function Home() {
           setValue(e.target.value);
         }}
       />
-      <Text>{value}</Text>
+      <TextArea
+        placeholder="hi"
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+      />
+      <Text maxLength={10}>{value}</Text>
     </div>
   );
 }
