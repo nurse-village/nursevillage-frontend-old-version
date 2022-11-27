@@ -20,6 +20,7 @@ export function TextField({
   width = 520,
   height = 48,
   borderColor = colors.borderGrey,
+  borderRadius = 8,
   textColor = colors.black,
   placeholderColor = colors.borderGrey,
   ...props
@@ -31,7 +32,7 @@ export function TextField({
       width={width}
       height={height}
       borderColor={borderColor}
-      borderRadius={8}
+      borderRadius={borderRadius}
       textColor={textStyle.color}
       placeholderColor={placeholderColor}
     />
