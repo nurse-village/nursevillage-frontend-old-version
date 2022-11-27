@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Flex } from "components/layout";
 import { Text, Typography } from "components/text";
 import { colors } from "constants/color";
 import { ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
