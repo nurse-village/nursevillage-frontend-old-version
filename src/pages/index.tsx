@@ -1,6 +1,7 @@
 import { Button } from "components/button";
 import { TextArea } from "components/form";
 import { TextField } from "components/form/TextField";
+import { Img } from "components/img";
 import { Text } from "components/text/Text";
 import Head from "next/head";
 import Image from "next/image";
@@ -34,6 +35,7 @@ export default function Home() {
         }}
       />
       <Text maxLength={10}>{value}</Text>
+      <Img src={"/assets/icons/ic_Article.png"} />
     </div>
   );
 }
