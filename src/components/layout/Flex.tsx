@@ -16,7 +16,11 @@ interface Props
 }
 
 export function Flex({ direction, align, justify, children, ...props }: Props) {
-  return <StyledFlex style={props.style}>{children}</StyledFlex>;
+  return (
+    <StyledFlex {...props} style={props.style}>
+      {children}
+    </StyledFlex>
+  );
 }
 
 const StyledFlex = styled.div<Partial<Props>>`
