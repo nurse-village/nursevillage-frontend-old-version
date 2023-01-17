@@ -1,7 +1,7 @@
 import { ImgHTMLAttributes } from "react";
 import styled from "styled-components";
-import { SizeType } from "types";
-import { convertPixelValue } from "utils";
+import { SizeType } from "types/SizeType";
+import { convertPixelValue } from "utils/convertPixelValue";
 
 interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;

@@ -9,6 +9,7 @@ import styles from 'styles/Home.module.css';
 
 export default function Home() {
   const [value, setValue] = useState<string>('');
+
   const [isChecked, setIsChecked] = useState<boolean>(false);
   return (
     <div className={styles.container}>
